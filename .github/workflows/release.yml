@@ -2,8 +2,14 @@ name: Build and Release Capacitor Android App
 
 on:
   push:
+    branches:
+      - main
     tags:
       - 'v*'
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -54,8 +60,18 @@ jobs:
         working-directory: android
         run: ./gradlew assembleDebug
 
-      # 9. Create GitHub Release and attach APK
+      # 9. Upload APK as Workflow Artifact (Always accessible from any workflow run)
+      - name: Upload Debug APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Music-Debug-APK
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 14
+
+      # 10. Create GitHub Release and attach APK (Runs on any v* tag push)
       - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v2
         with:
           files: android/app/build/outputs/apk/debug/app-debug.apk

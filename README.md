@@ -78,7 +78,7 @@ The app is built to run natively in portrait mode on Android devices while provi
 - **Build Tool**: Vite 8.
 - **Mobile Engine**: Capacitor 6 (Android native bridge).
 - **Audio DSP**: Web Audio API (`AudioContext`, `BiquadFilterNode`, `WaveShaperNode`, `ConvolverNode`, `DynamicsCompressorNode`, `AnalyserNode`).
-- **CI / CD**: GitHub Actions (`ubuntu-latest`, Temurin JDK 17, Gradle 8.14, `softprops/action-gh-release`).
+- **CI / CD**: GitHub Actions (`ubuntu-latest`, Temurin JDK 21, Gradle 8.14, `softprops/action-gh-release`).
 
 ---
 
@@ -88,7 +88,7 @@ The app is built to run natively in portrait mode on Android devices while provi
 
 - [Node.js](https://nodejs.org/) (v18 or higher)
 - [npm](https://www.npmjs.com/)
-- [Java Development Kit (JDK) 17](https://adoptium.net/) (for building Android APK)
+- [Java Development Kit (JDK) 21](https://adoptium.net/) (for building Android APK)
 - [Android SDK / Android Studio](https://developer.android.com/studio) (optional, for device debugging)
 
 ### 1. Clone the Repository
@@ -162,7 +162,7 @@ git push origin main
 git push origin v1.0.0
 ```
 
-GitHub Actions will check out the code, set up JDK 17 with Gradle caching, build the APK, and publish it under **Releases**.
+GitHub Actions will check out the code, set up JDK 21 with Gradle caching, build the APK, and publish it under **Releases**.
 
 ---
 

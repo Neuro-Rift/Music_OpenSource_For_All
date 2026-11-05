@@ -24,12 +24,12 @@ jobs:
           node-version: 22
           cache: 'npm'
 
-      # 3. Set up JDK 17 (Temurin distribution) with Gradle caching
-      - name: Set up JDK 17
+      # 3. Set up JDK 21 (required by Capacitor Android target source release 21)
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '21'
           cache: 'gradle'
 
       # 4. Install npm dependencies

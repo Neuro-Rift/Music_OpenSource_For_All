@@ -4,7 +4,8 @@
 > Built with React 19, TypeScript, Capacitor, and an 8-Stage Real-Time DSP Audio Engine.
 
 ![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20Web-blue?style=for-the-badge&logo=android)
-![Version](https://img.shields.io/badge/Version-1.0.0-purple?style=for-the-badge)
+[![Download APK](https://img.shields.io/badge/Download-Latest%20APK%20(v1.0.3)-brightgreen?style=for-the-badge&logo=android)](https://github.com/Neuro-Rift/Music_OpenSource_For_All/releases/latest)
+![Version](https://img.shields.io/badge/Version-1.0.3-purple?style=for-the-badge)
 ![Author](https://img.shields.io/badge/Author-Neuro--Rift-fuchsia?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-emerald?style=for-the-badge)
 

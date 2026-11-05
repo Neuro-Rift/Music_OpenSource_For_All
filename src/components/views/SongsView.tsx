@@ -1,6 +1,6 @@
 import React from 'react';
 import { Song } from '../../types/music';
-import { Play, Pause, Heart, FolderPlus, Music } from 'lucide-react';
+import { Play, Pause, Heart, FolderPlus, Music, Sparkles } from 'lucide-react';
 import { VisualizerBars } from '../card/VisualizerBars';
 
 interface SongsViewProps {
@@ -28,19 +28,19 @@ export const SongsView: React.FC<SongsViewProps> = ({
 
   return (
     <div className="pb-60 pt-5 px-4 sm:px-5 animate-in fade-in duration-300">
-      {/* Header with Generous Bottom Margin */}
+      {/* Header */}
       <div className="flex items-center justify-between mb-5">
         <div>
-          <h2 className="text-2xl font-black text-white tracking-normal flex items-center gap-2.5">
-            <Music size={23} className="text-violet-400" />
-            <span>All Songs</span>
+          <h2 className="text-2xl font-bold font-sora text-white tracking-normal flex items-center gap-2">
+            <Music size={22} className="text-[#a377fe]" />
+            <span>Master Tracks</span>
           </h2>
-          <p className="text-xs text-white/50 font-medium tracking-normal mt-1 leading-normal">
-            {songs.length} audio tracks in your library
+          <p className="text-xs text-[#ccc3d5] font-medium tracking-normal mt-1 leading-normal">
+            {songs.length} audio files in lossless stream
           </p>
         </div>
 
-        <label className="px-3.5 py-2 rounded-2xl glass-panel text-xs font-bold text-white flex items-center gap-2 cursor-pointer hover:bg-white/10 active:scale-95 transition-all border border-white/10 shadow-sm">
+        <label className="px-3.5 py-2 rounded-full bg-white/[0.06] hover:bg-white/[0.1] border border-white/15 text-xs font-bold text-white flex items-center gap-2 cursor-pointer active:scale-95 transition-all shadow-sm">
           <input
             type="file"
             multiple
@@ -48,12 +48,12 @@ export const SongsView: React.FC<SongsViewProps> = ({
             onChange={onAddLocalFiles}
             className="hidden"
           />
-          <FolderPlus size={15} className="text-cyan-400" />
+          <FolderPlus size={14} className="text-[#62CDFF]" />
           <span>Add Music</span>
         </label>
       </div>
 
-      {/* Spacious Song Card List (Proper 12px Gaps, Relaxed Words) */}
+      {/* Glass Ribbon Track Rows */}
       <div className="space-y-3">
         {songs.map((song, index) => {
           const isCurrent = currentSong?.id === song.id;
@@ -65,25 +65,25 @@ export const SongsView: React.FC<SongsViewProps> = ({
               onClick={() => onPlaySong(song)}
               className={`rounded-[22px] p-3 px-3.5 flex items-center gap-3.5 cursor-pointer transition-all duration-200 group border ${
                 isCurrent 
-                  ? 'border-violet-500/60 bg-gradient-to-r from-violet-950/45 via-purple-900/30 to-white/[0.02] shadow-[0_6px_24px_rgba(145,58,241,0.28)]' 
-                  : 'border-white/8 hover:border-white/15 bg-white/[0.04] hover:bg-white/[0.07] shadow-sm'
+                  ? 'border-[#a377fe]/50 bg-gradient-to-r from-[#1f1e2b]/90 via-[#a377fe]/15 to-transparent shadow-[0_8px_28px_rgba(163,119,254,0.25)]' 
+                  : 'border-white/[0.08] hover:border-white/20 bg-white/[0.03] hover:bg-white/[0.06]'
               }`}
               style={{
-                backdropFilter: 'blur(20px)',
-                WebkitBackdropFilter: 'blur(20px)',
+                backdropFilter: 'blur(24px)',
+                WebkitBackdropFilter: 'blur(24px)',
               }}
             >
               {/* Index or Equalizer Bars */}
               <div className="w-6 flex items-center justify-center flex-shrink-0">
                 {isThisPlaying ? (
-                  <VisualizerBars isPlaying={true} barCount={3} color="#ac5bfb" className="h-4" />
+                  <VisualizerBars isPlaying={true} barCount={3} color="#62CDFF" className="h-4" />
                 ) : (
-                  <span className="font-mono text-xs text-white/40 font-bold group-hover:hidden">
+                  <span className="font-mono text-xs text-[#ccc3d5]/50 font-bold group-hover:hidden">
                     {index + 1}
                   </span>
                 )}
                 <div className={`hidden group-hover:flex items-center justify-center ${isThisPlaying ? '!hidden' : ''}`}>
-                  <Play size={14} fill="white" className="text-white ml-0.5" />
+                  <Play size={14} fill="#62CDFF" className="text-[#62CDFF] ml-0.5" />
                 </div>
               </div>
 
@@ -96,20 +96,20 @@ export const SongsView: React.FC<SongsViewProps> = ({
                 />
               </div>
 
-              {/* Title & Artist & Album (Relaxed Typography) */}
+              {/* Title & Artist & Album */}
               <div className="flex-1 min-w-0 pr-1">
                 <div className="flex items-center gap-2">
-                  <h4 className={`text-[13.5px] font-bold truncate leading-snug tracking-normal ${isCurrent ? 'text-violet-300 font-extrabold' : 'text-white'}`}>
+                  <h4 className={`text-[13.5px] font-bold font-sora truncate leading-snug tracking-normal ${isCurrent ? 'text-[#62CDFF]' : 'text-white'}`}>
                     {song.title}
                   </h4>
                   {song.quality && (
-                    <span className="text-[9px] font-mono font-bold px-1.5 py-0.2 rounded-md bg-violet-500/20 text-violet-300 border border-violet-500/30 flex-shrink-0">
+                    <span className="text-[9px] font-mono font-bold px-1.5 py-0.2 rounded-md bg-[#62CDFF]/15 text-[#62CDFF] border border-[#62CDFF]/30 flex-shrink-0">
                       Hi-Res
                     </span>
                   )}
                 </div>
                 
-                <p className="text-xs text-white/60 truncate mt-1 font-medium tracking-normal leading-normal">
+                <p className="text-xs text-[#ccc3d5] truncate mt-1 font-medium tracking-normal leading-normal">
                   {song.artist} <span className="text-white/30">•</span> {song.album}
                 </p>
               </div>
@@ -121,7 +121,7 @@ export const SongsView: React.FC<SongsViewProps> = ({
                   onToggleLike(song.id);
                 }}
                 className={`p-2 rounded-full transition-transform active:scale-75 flex-shrink-0 ${
-                  song.liked ? 'text-pink-400' : 'text-white/30 hover:text-white'
+                  song.liked ? 'text-[#F43F9E] bloom-magenta' : 'text-[#ccc3d5]/40 hover:text-white'
                 }`}
                 title="Like"
               >
@@ -133,7 +133,7 @@ export const SongsView: React.FC<SongsViewProps> = ({
                 <span className="text-xs font-mono text-white/70 block font-semibold leading-normal">
                   {formatTime(song.duration)}
                 </span>
-                <span className="text-[10px] text-white/40 block font-mono mt-0.5">
+                <span className="text-[10px] text-[#ccc3d5]/40 block font-mono mt-0.5">
                   {song.year}
                 </span>
               </div>

@@ -258,7 +258,7 @@ export const App: React.FC = () => {
 
   return (
     <MobileDeviceFrame>
-      <div className="relative flex-1 w-full flex flex-col bg-[#141216] text-white overflow-hidden">
+      <div className="relative flex-1 w-full h-full flex flex-col bg-[#05040A] text-white overflow-hidden">
       {/* Hidden HTML5 Audio Element connected to Web Audio DSP */}
       <audio
         ref={audioRef}
@@ -300,8 +300,8 @@ export const App: React.FC = () => {
         dspState={dspState}
       />
 
-      {/* Main Content Area */}
-      <main className="relative z-10">
+      {/* Main Content Area - Single smooth scroll container */}
+      <main className="relative z-10 flex-1 overflow-y-auto overflow-x-hidden no-scrollbar">
         {currentTab === 'library' && (
           <LibraryView
             songs={filteredSongs}
